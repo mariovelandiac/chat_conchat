@@ -1,0 +1,16 @@
+{
+  "name": "chat_conchat",
+  "version": "0.1.0",
+  "description": "Chat construido con una API WebSocket",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chat",
+    "server",
+    "telegram"
+  ],
+  "author": "Mario Velandia C <mariovelandiawork@gmail.com>",
+  "license": "MIT"
+}
