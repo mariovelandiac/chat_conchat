@@ -4,7 +4,9 @@
   "description": "Chat construido con una API WebSocket",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [
     "chat",
@@ -12,5 +14,8 @@
     "telegram"
   ],
   "author": "Mario Velandia C <mariovelandiawork@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
