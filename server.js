@@ -1,6 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser')
-const router = require('./network/routes')
+const bodyParser = require('body-parser');
+const router = require('./network/routes');
+const db = require('./db');
+
+// conexión con base de datos
+db();
 
 // crear aplicacion
 var app = express();

@@ -5,7 +5,7 @@ const success = function (req, res, message, status) {
     }
     res.status(status || 200).json({
         error: '',
-        message: message
+        body: message
     })
 }
 
