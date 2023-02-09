@@ -8,7 +8,9 @@ const config = {
     dbPassword: process.env.DB_PASSWORD,
     dbHost: process.env.DB_HOST,
     dbName: process.env.DB_NAME,
-    cors: process.env.CORS
+    cors: process.env.CORS,
+    host: process.env.HOST || 'http://localhost',
+    publicRoute: process.env.PUBLIC_ROUTE || '/app'
 }
 
 const userEncode = encodeURIComponent(config.dbUser);

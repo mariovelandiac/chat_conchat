@@ -1,13 +1,25 @@
 const express = require('express');
+// crear aplicacion
+const app = express();
+// conectar a servidor http
+const server = require('http').Server(app);
+
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const router = require('./network/routes');
+const socket = require('./socket');
 const db = require('./db');
+const {config} = require('./config/config')
+
 
 // conexión con base de datos
 db();
 
-// crear aplicacion
-var app = express();
+//creación de módulo cors
+app.use(cors());
+
+// conexión con socket
+socket.connect(server)
 
 // añadir parseo para las peticiones y respuestas, convierte todo a JSON?
 app.use(bodyParser.json());
@@ -17,7 +29,9 @@ app.use(bodyParser.json());
 router(app)
 
 // servidor estático
-app.use('/app', express.static('public/src'))
+app.use(config.publicRoute, express.static('public/'))
 
-app.listen(3000);   
-console.log('la aplicación está escuchando en http:localhost:3000')
+server.listen(parseInt(config.port), ()=>{
+  console.log(`la aplicación está escuchando en http:localhost:${process.env.PORT}`);
+});
+

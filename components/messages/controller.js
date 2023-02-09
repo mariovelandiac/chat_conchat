@@ -1,4 +1,6 @@
 const store = require('./store');
+const {socket} = require('./../../socket');
+const {config} = require('./../../config/config')
 
 class Message {
     constructor() {
@@ -13,7 +15,7 @@ class Message {
 
         let fileURL = '';
         if (file) {
-          fileURL = 'http://localhost:3000/app/files/' + file.filename;
+          fileURL = `${config.host}:${config.port}${config.publicRoute}/files/${file.filename}`;
         }
 
         const fullMessage = {
@@ -23,7 +25,8 @@ class Message {
             date: new Date(),
             file: fileURL
         }
-        const rta = await store.add(fullMessage)
+        const rta = await store.add(fullMessage);
+        socket.io.emit('message', rta)
         return rta
     }
 
